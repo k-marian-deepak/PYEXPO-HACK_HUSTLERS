@@ -31,7 +31,7 @@ List your team members along with their roles.
 - *Member 7* - Role
 - *Member 8* - Role
 
-![Team Photo](media/team-photo.jpg)
+![Team Photo](media/team-photo.png)
 
 ---
 
@@ -109,10 +109,10 @@ Images to demonstrate the user interface:
 *Example pages:*
 
 1. *Landing Page:*
-   ![Landing Page Mockup](media/DashBoard.jpg)
+   ![Landing Page Mockup](media/LoadingPage.png)
 
 2. *Dashboard:*
-   ![Dashboard Mockup](path/to/dashboard-mockup.png)
+   ![Dashboard Mockup](media/DashBoard.png)
 
 3. *Analytics View:*
    ![Analytics Mockup](path/to/analytics-mockup.png)
