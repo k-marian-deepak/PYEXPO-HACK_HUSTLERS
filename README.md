@@ -109,7 +109,7 @@ Images to demonstrate the user interface:
 *Example pages:*
 
 1. *Landing Page:*
-   ![Landing Page Mockup](path/to/landing-page-mockup.png)
+   ![Landing Page Mockup](media/DashBoard.jpg)
 
 2. *Dashboard:*
    ![Dashboard Mockup](path/to/dashboard-mockup.png)
