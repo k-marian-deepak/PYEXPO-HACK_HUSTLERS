@@ -1,4 +1,4 @@
-![PyExpo Logo](path/to/pyexpo-logo.png)
+![PyExpo Logo](media\pyexpo-logo.png)
 
 ---
 
