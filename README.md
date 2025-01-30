@@ -115,7 +115,7 @@ Images to demonstrate the user interface:
    ![Dashboard Mockup](media/DashBoard.png)
 
 3. *Analytics View:*
-   ![Analytics Mockup](path/to/analytics-mockup.png)
+   ![Analytics Mockup](media/Analytics.png)
 
 ---
 
