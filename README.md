@@ -32,7 +32,7 @@ List your team members along with their roles.
 - Logesh Raj B - FrontEnd (HTML, CSS)
 - Piriyadharshini L K - FrontEnd (Java Script - Animation)
 
-![Team Photo](media/team-photo.png)
+![Team Photo](media/team-photo.jpeg)
 
 ---
 
