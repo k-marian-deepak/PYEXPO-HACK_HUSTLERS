@@ -26,11 +26,11 @@ Additionally, an automated traffic violation detection mechanism is implemented 
 
 List your team members along with their roles.
 
-- *Member 1* - Deepak K M
-- *Member 2* - Mirdual R
-- *Member 3* - Jaisurya S
-- *Member 4* - Logesh Raj B
-- *Member 5* - Piriyadharshini L K
+- Deepak K M - Over all Cordinator and Execution Evaluator, Backend
+- Mirdual R - Backend, Databade
+- Jaisurya S - FrontEnd (HTML, CSS)
+- Logesh Raj B - FrontEnd (HTML, CSS)
+- Piriyadharshini L K - FrontEnd (Java Script - Animation)
 
 ![Team Photo](media/team-photo.png)
 
