@@ -16,7 +16,8 @@ Formulate your problem statement clearly and concisely.
 
 This project aims to optimize traffic signal timings using **Deep Learning** to improve traffic flow at junctions. By dynamically adjusting green light durations based on real-time congestion levels, busier lanes receive additional time to clear traffic efficiently. The system continuously updates signal timings for all lanes to maintain smooth movement and reduce delays.  
 
-Additionally, an **automated traffic violation detection** mechanism is implemented to identify rule violations, such as riding without a helmet. Upon detection, the system notifies traffic authorities, ensuring better enforcement of road safety regulations.
+Additionally, an automated traffic violation detection mechanism is implemented to identify rule violations, such as riding without a helmet. Upon detection, the system notifies traffic authorities, ensuring better enforcement of road safety regulations.
+
 ---
 
 ## Team Members
