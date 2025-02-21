@@ -4,7 +4,7 @@
 
 ## Problem Statement
 
-*Problem Statement ID – xxxxx*
+*Problem Statement ID – PYS114*
 
 Formulate your problem statement clearly and concisely.
 
@@ -12,24 +12,24 @@ Formulate your problem statement clearly and concisely.
 
 ## Overview
 
-Provide an overview of the project, its purpose, and what it aims to achieve along with proposed solution
+### **Overview**  
 
+This project aims to optimize traffic signal timings using **Deep Learning** to improve traffic flow at junctions. By dynamically adjusting green light durations based on real-time congestion levels, busier lanes receive additional time to clear traffic efficiently. The system continuously updates signal timings for all lanes to maintain smooth movement and reduce delays.  
+
+Additionally, an **automated traffic violation detection** mechanism is implemented to identify rule violations, such as riding without a helmet. Upon detection, the system notifies traffic authorities, ensuring better enforcement of road safety regulations.
 ---
 
 ## Team Members
 
-*Team ID – xxxxx*
+*Team ID – T026*
 
 List your team members along with their roles.
 
-- *Member 1* - Team Leader
-- *Member 2* - Role
-- *Member 3* - Role
-- *Member 4* - Role
-- *Member 5* - Role
-- *Member 6* - Role
-- *Member 7* - Role
-- *Member 8* - Role
+- *Member 1* - Deepak K M
+- *Member 2* - Mirdual R
+- *Member 3* - Jaisurya S
+- *Member 4* - Logesh Raj B
+- *Member 5* - Piriyadharshini L K
 
 ![Team Photo](media/team-photo.png)
 
@@ -39,10 +39,10 @@ List your team members along with their roles.
 
 List the technologies and tools used in the project. For example:
 
-- *Frontend:* HTML, CSS, JavaScript, ReactJS
-- *Backend:* Flask, Django
-- *Database:* MongoDB, MySQL
-- *Other Tools:* Docker, Git, TensorFlow
+- *Frontend:* HTML, CSS, JavaScript
+- *Backend:* Flask, Django (gotta psick one)
+- *Database:* MySQL
+- *Other Tools:* Git, TensorFlow
 
 ---
 
