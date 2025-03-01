@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Signal Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("bg1.jpg");
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .camera-box {
+            background: #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .camera-box video {
+            width: 60%;
+            border-radius: 5px;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #eee;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .signal {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background: red; }
+        .green { background: green; }
+        h1 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>TRAFFIC MONITOR</h1>
+    <div class="container">
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 1</span>
+                <div id="signal1" class="signal red"></div>
+                <span id="timer1">40s</span>
+            </div>
+            <video id="video1" muted>
+                <source src="C:\hack_hustlers\Logic\static\vid1.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 2</span>
+                <div id="signal2" class="signal red"></div>
+                <span id="timer2">9s</span>
+            </div>
+            <video id="video2" muted>
+                <source src="C:\hack_hustlers\Logic\static\vid2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 3</span>
+                <div id="signal3" class="signal red"></div>
+                <span id="timer3">4s</span>
+            </div>
+            <video id="video3" muted>
+                <source src="C:\hack_hustlers\Logic\static\vid3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 4</span>
+                <div id="signal4" class="signal red"></div>
+                <span id="timer4">5s</span>
+            </div>
+            <video id="video4" muted>
+                <source src="C:\hack_hustlers\Logic\static\vid4.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // Lane timers (initial times)
+        let laneTimers = [40, 9, 4, 5]; // Timers for each lane
+        let backdropTimers = [40, 9, 4, 5]; // Store backdrop timers, same initial values
+        let activeLane = 0; // Start with Lane 1 as the active lane
+
+        // Function to update the backdrop timers (should run for all lanes)
+        function updateBackdropTimers() {
+            setInterval(() => {
+                for (let i = 0; i < backdropTimers.length; i++) {
+                    if (i !== activeLane) {
+                        backdropTimers[i]++; // Increment the backdrop timer for red lanes
+                    }
+                    updateTimerDisplay(i); // Update display for each lane
+                }
+            }, 1000); // Update every second
+        }
+
+        // Function to update the display of each lane's timer
+        function updateTimerDisplay(laneIndex) {
+            const timerId = `timer${laneIndex + 1}`;
+            const signalId = `signal${laneIndex + 1}`;
+            const signalElement = document.getElementById(signalId);
+            const videoElement = document.getElementById(`video${laneIndex + 1}`);
+
+            // When the active lane's timer reaches zero, stop video and signal turns red
+            if (laneTimers[laneIndex] <= 0 && laneIndex === activeLane) {
+                // Turn signal red and stop video
+                signalElement.classList.remove("green");
+                signalElement.classList.add("red");
+                videoElement.pause();
+                videoElement.currentTime = 0; // Reset video
+
+                // Move to next lane
+                activeLane = (activeLane + 1) % 4; // Switch to next lane
+                laneTimers[activeLane] = [40, 9, 4, 5][activeLane]; // Reset the active lane's timer
+                startLane();
+            }
+
+            document.getElementById(timerId).innerText = `${laneTimers[laneIndex]}s`; // Update timer display
+        }
+
+        // Function to start the active lane (green signal, play video)
+        function startLane() {
+            const signalId = `signal${activeLane + 1}`;
+            const videoId = `video${activeLane + 1}`;
+            const signalElement = document.getElementById(signalId);
+            const videoElement = document.getElementById(videoId);
+
+            // Set the active lane's signal to green and play video
+            signalElement.classList.remove("red");
+            signalElement.classList.add("green");
+            videoElement.play();
+        }
+
+        // Initialize the traffic signal system
+        function initializeTrafficSystem() {
+            startLane();  // Start with Lane 1
+            updateBackdropTimers();  // Keep all backdrop timers running
+        }
+
+        // Initialize the system
+        initializeTrafficSystem();
+    </script>
+</body>
+</html>

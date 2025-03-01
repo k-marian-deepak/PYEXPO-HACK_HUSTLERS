@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Traffic Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgba(217, 217, 217);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            position: fixed;
+            height: 100%;
+            padding-top: 90px;
+            left: -250px;
+            transition: 0.3s;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: white;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            color: black;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main content */
+        .content-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 90%;
+            background: transparent;
+            padding: 20px;
+            border-radius: 70px;
+            box-shadow: 0px 4px 10px rgba(36, 128, 51, 0.9); /* White shadow with transparency */
+            margin-top: 50px;
+    }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .key-features {
+            margin-top: 20px;
+            color: black;
+        }
+
+        .key-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .key-features li {
+            margin-bottom: 10px;
+            color:black;
+        }
+
+        .yes{
+            color:black;
+        }
+        .no{
+            color: black;
+            font-size: 240%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="http://127.0.0.1:5000/">home</a>
+        <a href="help">Main</a>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+
+    <!-- Content Section -->
+    <div class="content-container">
+        <h1 class="no">Smart Traffic Management with AI-Powered Signal Optimization</h1>
+        <div class="line"></div>
+        <p class="yes">
+            Our advanced AI-driven traffic management system optimizes signal timings in real-time 
+            to reduce congestion and improve road efficiency.   By analyzing traffic density at each 
+            junction, the system dynamically adjusts green light durations, prioritizing busier lanes 
+            while ensuring smooth traffic flow across all directions.
+        </p>
+
+        <div class="key-features">
+            <h2>Key Features:</h2>
+            <ul style="line-height: 50px ;" class="yes">
+                <li>🟢 <b>Intelligent Signal Control</b> – Adaptive signal timing based on real-time traffic conditions to minimize delays.
+                 travel time and improves road efficiency.</li>
+                <li>🚗 <b>Efficient Traffic Flow</b> – Prevents unnecessary waiting times in less congested lanes while clearing busy lanes faster.Enhances road capacity utilization, reducing fuel consumption and emissions.</li>
+                <li>🔍 <b>Automated Violation Detection</b> – Detects and reports road rule violations instantly to traffic controllers.Improves road safety by ensuring compliance with traffic rules.</li>
+                <li>⚡ <b>Seamless Integration & Smart City Compatibility</b> – Can be integrated with existing traffic management systems.Supports smart city initiatives by providing real-time traffic insights and reports.</li>
+            </ul>
+        </div>
+
+        <p class="yes">
+            Experience the future of traffic management with AI-powered solutions designed to create smarter, safer, and more efficient roads.
+        </p>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        }
+    </script>
+
+</body>
+</html>

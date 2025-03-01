@@ -3,200 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4 Lane Traffic Video Display</title>
+    <title>Traffic Signal Monitor</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            /*background-image:url("C:/hack_hustlers/Logic/static/img.jpeg");*/
+            overflow-y: hidden;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: rgb(31, 29, 29);
-            margin: 0;
-            gap: 20px;
+            background-size: cover;
         }
-
-        .dropbtn {
-            background-color: grey;
+        .container {
+            background: rgb(217, 217, 217);
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        #video1, #video2 , #video3 , #video4    {
+            width: 100%;
+        }
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background: #333;
             color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
+            position: fixed;
+            height: 100%;
+            padding-top: 90px;
+            left: -250px;
+            transition: 0.3s;
         }
 
-        .dropdown {
-            position: static;
-            display: inline-block;
-            margin-bottom: 20%;
-            margin-left: -5%;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px black;
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
+        .sidebar a {
+            padding: 15px;
             text-decoration: none;
             display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: white;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: black;
-        }
-
-        .lane-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .video-container {
-            position: relative;
-            width: 48%;
-            max-width: 640px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .video-container video {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .video-container.fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 1000;
-            background: black;
-        }
-
-        .video-container.fullscreen video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-        }
-
-        .signal-info {
-            background-color: black;
             color: white;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: white;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            color: black;
+            background: white;
             padding: 10px;
-            font-size: 16px;
-            font-weight: bold;
             border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .camera-box {
+            background: #ddd;
+            padding: 10px;
+            border-radius: 10px;
             text-align: center;
-            min-width: 180px;
         }
-
-        .left-align {
-            order: -1;
+        .camera-box video {
+            width: 60%;
+            border-radius: 5px;
         }
-
-        .right-align {
-            order: 1;
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #eee;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .signal {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background: red; }
+        .yellow { background: yellow; }
+        .green { background: green; }
+        h1 {
+            color: rgb(29, 20, 20);
         }
     </style>
 </head>
 <body>
-    <div class="dropdown">
-        <button class="dropbtn">ALL</button>
-        <div class="dropdown-content">
-            <a href="home" class="main">HOME</a>
-            <a href="aboutus" class="four">ABOUT</a>
-        </div>
-    </div>
-
-    <!-- Lane 1 -->
-    <div class="lane-container">
-        <div class="signal-info left-align" id="signal1">Loading...</div>
-        <div class="video-container">
-            <video id="vid1" controls autoplay loop>
-                <source src="{{url_for('static',filename='vid.mp4')}}" type="video/mp4">
+    <h1>MAIN PAGE</h1>
+    <div class="container">
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 1</span>
+                <div id="signal1" class="signal red"></div>
+                <span id="timer1">0</span>
+            </div>
+            <video id="video1" controls autoplay loop muted>
+                <source src="C:\hack_hustlers\Logic\static\vid1.mp4" type="video/mp4">
             </video>
         </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#">home</a>
+        <a href="#">Main</a>
     </div>
 
-    <!-- Lane 2 -->
-    <div class="lane-container">
-        <div class="video-container">
-            <video id="vid2" controls>
-                <source src="{{url_for('static',filename='Traffic Jam Stock Video.mp4')}}" type="video/mp4">
-            </video>
-        </div>
-        <div class="signal-info right-align" id="signal2">Loading...</div>
-    </div>
+    <!-- Menu Button -->
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
 
-    <!-- Lane 3 -->
-    <div class="lane-container">
-        <div class="signal-info left-align" id="signal3">Loading...</div>
-        <div class="video-container">
-            <video id="vid3" controls>
-                <source src="{{url_for('static',filename='vid3.mp4')}}" type="video/mp4">
+        
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 2</span>
+                <div id="signal2" class="signal yellow"></div>
+                <span id="timer2">0</span>
+            </div>
+            <video id="video2" controls autoplay loop muted>
+                <source src="C:\hack_hustlers\Logic\static\vid2.mp4" type="video/mp4">
             </video>
         </div>
-    </div>
 
-    <!-- Lane 4 -->
-    <div class="lane-container">
-        <div class="video-container">
-            <video id="vid4" controls>
-                <source src="{{url_for('static',filename='vid4.mp4')}}" type="video/mp4">
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 3</span>
+                <div id="signal3" class="signal red"></div>
+                <span id="timer3">0</span>
+            </div>
+            <video id="video3" controls autoplay loop muted>
+                <source src="C:\hack_hustlers\Logic\static\vid3.mp4" type="video/mp4">
             </video>
         </div>
-        <div class="signal-info right-align" id="signal4">Loading...</div>
+
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 4</span>
+                <div id="signal4" class="signal green"></div>
+                <span id="timer4">0</span>
+            </div>
+            <video id="video4" controls autoplay loop muted>
+                <source src="C:\hack_hustlers\Logic\static\vid4.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 
     <script>
-        function getCongestionLevel(vehicleCount) {
-            const totalVehicles = vehicleCount.Car + vehicleCount.Bike + vehicleCount['Heavy Vehicle'];
-            
-            if (totalVehicles <= 10) {
-                return { level: "Low Traffic", time: 10 };
-            } else if (totalVehicles > 10 && totalVehicles <= 20) {
-                return { level: "Moderate Traffic", time: 30 };
-            } else {
-                return { level: "High Traffic", time: 60 };
-            }
-        }
+    
+    let countdownIntervals = {};
 
-        async function fetchTrafficData() {
-            try {
-                const response = await fetch('/traffic_info');
-                const data = await response.json();
+    async function fetchSignalTimes() {
+        try {
+            let response = await fetch("/get_signal_times");
+            let data = await response.json();
 
-                if (data) {
-                    // Process each lane separately
-                    ['lane1', 'lane2', 'lane3', 'lane4'].forEach((lane, index) => {
-                        const congestionData = getCongestionLevel(data[lane].vehicle_count);
-                        document.getElementById(`signal${index + 1}`).innerText = 
-                            `Lane ${index + 1}: ${congestionData.level} | Time: ${congestionData.time}s | Vehicles: ${data[lane].vehicle_count.Car + data[lane].vehicle_count.Bike + data[lane].vehicle_count['Heavy Vehicle']}`;
-                    });
+            let lanes = ["Lane 1", "Lane 2", "Lane 3", "Lane 4"];
+
+            lanes.forEach((lane, index) => {
+                let timerId = "timer" + (index + 1);
+                let signalId = "signal" + (index + 1);
+                let videoId = "video" + (index + 1);
+                let trafficData = data[lane];
+
+                let remainingTime = trafficData["Remaining Time"];
+                let status = trafficData["Status"];
+
+                let signalElement = document.getElementById(signalId);
+                signalElement.classList.remove("red", "green");
+                signalElement.classList.add(status.toLowerCase());
+
+                let videoElement = document.getElementById(videoId);
+                if (status === "Green") {
+                    videoElement.play();
+                } else {
+                    videoElement.pause();
                 }
-            } catch (error) {
-                console.error("Error fetching traffic data:", error);
-            }
-        }
 
-        // Fetch data every 3 seconds
-        setInterval(fetchTrafficData, 3000);
+                // Clear old countdown interval if exists
+                if (countdownIntervals[timerId]) {
+                    clearInterval(countdownIntervals[timerId]);
+                }
+
+                // Start new countdown
+                let timeLeft = remainingTime;
+                countdownIntervals[timerId] = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        document.getElementById(timerId).innerText = timeLeft + "s";
+                    } else {
+                        clearInterval(countdownIntervals[timerId]);
+                    }
+                }, 1000);
+            });
+        } catch (error) {
+            console.error("Error fetching signal times:", error);
+        }
+    }
+
+    // Fetch signal times every second
+    setInterval(fetchSignalTimes, 1000);
+    fetchSignalTimes(); // Initial call
     </script>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.left === "0px") {
+            sidebar.style.left = "-250px";
+        } else {
+            sidebar.style.left = "0px";
+        }
+    }
+</script>
+
 </body>
 </html>

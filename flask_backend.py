@@ -61,17 +61,21 @@ def index():
     """Render HTML page for video display."""
     return render_template("index.html")
 
-@app.route('/home')
-def home():
-    return render_template("home.html")
+@app.route('/overview')
+def overview():
+    return render_template("overview.html")
 
-@app.route('/main')
-def main():
-    return render_template("main.html")
+@app.route('/help')
+def help():
+    return render_template("help.html")
 
 @app.route('/aboutus')
 def aboutus():
     return render_template("aboutus.html")
+
+@app.route('/review')
+def review():
+    return render_template("review.html")
 
 @app.route('/report')
 def report():  

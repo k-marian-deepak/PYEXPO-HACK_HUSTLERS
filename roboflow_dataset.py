@@ -58,5 +58,3 @@ if cap is not None and cap.isOpened():
 #        process_video_frame(frame)
 
     cap.release()  # Release only if cap was defined
-else:
-    print(f"❌ Error: Video file '{video_path}' not found or could not be opened!")

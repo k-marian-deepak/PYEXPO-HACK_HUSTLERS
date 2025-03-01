@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Signal Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("bg1.jpg");
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            overflow-x:hidden;
+            overflow-y:hidden;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .camera-box {
+            background: #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .camera-box video {
+            width: 60%;
+            border-radius: 5px;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #eee;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .signal {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background: red; }
+        .green { background: green; }
+        h1 {
+            color: black;
+        }
+        .y{
+            background-color:transparent;
+            text-decoration:none;
+            color: white;
+            border: transparent;
+            margin-right:90%;
+            font-weight :700px;
+           
+        }
+        .n{
+            text-decoration: transparent;
+            color:black;
+            font-weight :700px;
+        }
+    </style>
+</head>
+<body>
+    <h1>TRAFFIC MONITOR</h1>
+    <button class="y"><a href="http://127.0.0.1:5000/" class="n">BACK</a></button>
+    <div class="container">
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 1</span>
+                <div id="signal1" class="signal red"></div>
+                <span id="timer1">30s</span>
+            </div>
+            <video id="video1" muted>
+                <source src="\static\vid1.mp4" type="video/mp4">
+            </video>
+            </video>
+        </div>
+        
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 2</span>
+                <div id="signal2" class="signal red"></div>
+                <span id="timer2">30s</span>
+            </div>
+            <video id="video2" muted>
+                <source src="\static\vid2.mp4" type="video/mp4">
+            </video>
+            </video>
+        </div>
+
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 3</span>
+                <div id="signal3" class="signal red"></div>
+                <span id="timer3">30s</span>
+            </div>
+            <video id="video3" muted>
+                <source src="\static\vid3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="camera-box">
+            <div class="status-bar">
+                <span>Density Cam 4</span>
+                <div id="signal4" class="signal red"></div>
+                <span id="timer4">30s</span>
+            </div>
+            <video id="video4" muted>
+                <source src="\static\vid4.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        let lanes = ["Lane 1", "Lane 2", "Lane 3", "Lane 4"];
+        let laneTimers = [15,19,18,15]; // Timer settings for each lane1
+
+        async function startLaneControl() {
+            while (true) {
+                for (let laneIndex = 0; laneIndex < lanes.length; laneIndex++) {
+                    let timerId = "timer" + (laneIndex + 1);
+                    let signalId = "signal" + (laneIndex + 1);
+                    let videoId = "video" + (laneIndex + 1);
+                    let timeLeft = laneTimers[laneIndex];
+
+                    let signalElement = document.getElementById(signalId);
+                    let videoElement = document.getElementById(videoId);
+
+                    // Reset all signals and stop all videos
+                    for (let i = 1; i <= 4; i++) {
+                        let vid = document.getElementById("video" + i);
+                        vid.pause();
+                        vid.currentTime = 0; // Reset video
+                        document.getElementById("signal" + i).classList.remove("green", "red");
+                        document.getElementById("signal" + i).classList.add("red");
+                        document.getElementById("timer" + i).innerText = laneTimers[i - 1] + "s";
+                    }
+
+                    // Activate current lane
+                    signalElement.classList.remove("red");
+                    signalElement.classList.add("green");
+
+                    // Start playing video and enable looping while the lane is active
+                    videoElement.loop = true;
+                    videoElement.play();
+
+                    // Start countdown
+                    document.getElementById(timerId).innerText = timeLeft + "s";
+
+                    while (timeLeft > 0) {
+                        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second
+                        timeLeft--;
+
+                        if (timeLeft > 0) {
+                            document.getElementById(timerId).innerText = timeLeft + "s";
+                        } else {
+                            // Stop video when timer hits zero
+                            document.getElementById(timerId).innerText = "0s";
+                            videoElement.loop = false;
+                            videoElement.pause();
+                            signalElement.classList.remove("green");
+                            signalElement.classList.add("red");
+                        }
+                    }
+
+                    // Wait 2 seconds before switching to next lane
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                }
+            }
+        }
+
+        startLaneControl();
+    </script>
+</body>
+</html>

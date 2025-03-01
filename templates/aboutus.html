@@ -1,48 +1,159 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <body>
-        <h1 class="man"><a href="https://www.linkedin.com/in/k-m-deepak-72193a314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_KBK_0_rRw9zkazLgksl6dNMasmTiN6SqA&s",height="30px" width="30px" class="yes"></a>   K Marian Deepak</h1>
-        <h1 class="no" ><a href="https://www.instagram.com/hack_hustlers?igsh=NTVxcXFzN29yc3p3">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png",height="30px"  width="30px" class="yes"></a>     HACK HUSTLERS </h1>
-        <h1 class="man"><a href="https://www.linkedin.com/in/mirdula-r-06a771320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_KBK_0_rRw9zkazLgksl6dNMasmTiN6SqA&s",height="30px" width="30px" class="yes"></a>   Mirdula R</h1>
-        <h1 class="no"><a href="https://www.instagram.com/pyexpo?igsh=eXR5ejh4Y3B3bWVw">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png",height="30px" width="30px" class="yes"></a>     PYEXPO</h1>
-        <h1 class="man"><a href="https://www.linkedin.com/in/logesh-raj-b-2960b1315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_KBK_0_rRw9zkazLgksl6dNMasmTiN6SqA&s",height="30px" width="30px" class="yes"></a>   Logesh Raj B</h1>
-        <h1 class="no"><a href="https://www.instagram.com/ips_tech.community?igsh=bGcxaTBzMnlxbnFr">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png",height="30px" width="30px" class="yes"></a>     IPS TECH </h1>
-        <h1 class="man"><a href="https://www.linkedin.com/in/piriyadharshini-kannan-2b8074315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_KBK_0_rRw9zkazLgksl6dNMasmTiN6SqA&s",height="30px" width="30px" class="yes"></a>   Piriyadharshini L K</h1>
-        <h1 class="no"><a href="https://www.instagram.com/kgisl_institute_of_technology?igsh=OWlubXIzYTh3d210">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png",height="30px" width="30px" class="yes"></a>     KITE</h1>
-        <h1 class="man"><a href="https://www.linkedin.com/in/jaisurya-s-78b999351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_KBK_0_rRw9zkazLgksl6dNMasmTiN6SqA&s",height="30px" width="30px" class="yes"></a>               Jaisurya S</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("/static/Socials.png");
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            background-position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            position: fixed;
+            height: 100%;
+            padding-top: 90px;
+            left: -250px;
+            transition: 0.3s;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: white;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            color: black;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .label {
+            position: absolute;
+            background:black;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .dot {
+            position: absolute;
+            width: 20px;
+            height:20px;
+            background:black;
+            border-radius: 50%;
+        }
+        /* Positioning Elements */
+        .deepak { top:15% ;left: 35%;}
+        .mirdula { top: 25%; left: 30%}
+        .logesh { top: 35%; left: 25%; }
+        .pirya { top: 45%; left: 20%; }
+        .jaisurya { top: 55%; left: 15%; }
+        .pyexpo { top:60%; right: 15%; }
+        .ips-tech { top:70%; right: 20%; }
+        .hack-hustlers {top: 80%; right: 25%; }
+        .kite { top: 90%; right: 30%; }
+        h1{ color: black;
+            text-align: center;
         
-        <style>
-            
-            .yes{
-                margin-top: 2%;
-                font-size: 25px;
-                margin-left: 3%;
-            }
-            .no{
-                margin-left: 50%;
-                font-size: 25px;
-                color: white;
-            }
-            body{
-                background-image:url("https://img.freepik.com/premium-vector/aesthetic-colorful-blue-gradient-background-illustration-perfect-wallpaper-background-backdrop-banner-your-design_565280-1008.jpg");
-                background-repeat:no-repeat;
-                background-size:cover ;
-                background-position:fixed;
-        
-            }
-            .man{
-                color: white;
-            }
-            
-        </style>
-    </body>
+        }
+        .image-container {
+    width: 400px;
+    height: 300px;
+    background-image: url('image.png');
+    background-size: cover;
+    background-position: center;
+    }
+   
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <a href="http://127.0.0.1:5000/">home</a>
+            <a href="help">Main</a>
+        </div>
+    
+        <!-- Menu Button -->
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    
+
+   
+<!-- Labels -->
+    <h1>ABOUT US</h1>
+
+
+
+    <div class="label deepak">Deepak K M</div></a>
+    <div class="label mirdula">Mirdula R</div>
+    <div class="label logesh">Logesh raj B</div>
+    <div class="label pirya">Piriya Dahrsini L K</div>
+    <div class="label jaisurya">Jaisurya S</div>
+    <div class="label pyexpo">Pyexpo</div>
+    <div class="label ips-tech">IPS Tech Community</div>
+    <div class="label hack-hustlers">Hack Hustlers</div>
+    <div class="label kite">KiTE</div>
+
+    <!-- Dots -->
+    <a href="https://www.linkedin.com/in/k-m-deepak-72193a314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><div class="dot"  style="top: 17%; left: 32%;"></div><a>
+    <a href="https://www.linkedin.com/in/mirdula-r-06a771320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><div class="dot" style="top: 27%; left: 27%;"></div></a>
+    <a href="https://www.linkedin.com/in/logesh-raj-b-2960b1315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><div class="dot" style="top: 37%; left: 22%;"></div></a>
+    <a href="https://www.linkedin.com/in/piriyadharshini-kannan-2b8074315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><div class="dot" style="top: 47%; left: 17%;"></div></a>
+    <a href="https://www.linkedin.com/in/jaisurya-s-78b999351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><div class="dot" style="top: 57%; left: 12%;"></div></a>
+    <a href="https://www.instagram.com/hack_hustlers?igsh=NTVxcXFzN29yc3p3"><div class="dot" style="top: 60%; right: 12%;"></div></a>
+    <a href="https://www.instagram.com/pyexpo?igsh=eXR5ejh4Y3B3bWVw"> <div class="dot" style="top: 70%; right: 17%;"></div></a>
+    <a href="https://www.instagram.com/ips_tech.community?igsh=bGcxaTBzMnlxbnFr"><div class="dot" style="top: 80%; right: 22%;"></div></a>
+    <a href="https://www.instagram.com/kgisl_institute_of_technology?igsh=OWlubXIzYTh3d210"><div class="dot" style="top: 90%; right: 25%;"></div></a>
+</div>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.left === "0px") {
+            sidebar.style.left = "-250px";
+        } else {
+            sidebar.style.left = "0px";
+        }
+    }
+</script>
+
+</body>
 </html>

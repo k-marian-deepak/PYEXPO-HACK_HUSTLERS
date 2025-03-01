@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>taffic signal optimaziation</title>
+    <meta meta name="viewport" content= "width=device-width, user-scalable=no" />
     
 </head>
 <body>
@@ -10,55 +11,60 @@
     li{
         display:inline;
         color: white;
-        margin-left: 10%;
-        padding: 6%;
-
+        
     }
     body{
-        background-image:url("https://t4.ftcdn.net/jpg/05/13/33/85/360_F_513338597_W58B8AOOb6EPqfpalPhjZgXLCsWw0opu.jpg");
+        overflow-x: hidden;
+        overflow-y: hidden;
+        background-image:url("/static/Frame 3.png");
         background-repeat: no-repeat;
-        background-size:cover ;
-        background-position:fixed;
-        
-
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+        background-position: fixed;
+        flex-direction: column;
     }
     .one{
         cursor: pointer; 
         background-color:transparent;
         height:50px;
-        width: 50px;
         color: azure;
-        font-size: 25px;
-        border:transparent ;
+        font-size: 20px;
+        border:none;
+        height:50px;
+        padding: 10px 20px;
         text-align: 50%;
+        margin-right:60px;
+        transition: color 0.3s ease,transform 0.2s ease;
         
     }
     .two{
-        
-        cursor: pointer;
+        cursor: pointer; 
         background-color:transparent;
         height:50px;
-        width: 50px;
-        color:azure;
-        font-size: 25px;
-        border:transparent ;
-        margin-left: 5%;
+        color: azure;
+        font-size: 20px;
+        border:none;
+        height:50px;
+        padding: 10px 20px;
+        text-align: 50%;
+        margin-right:50px;
+        transition: color 0.3s ease,transform 0.2s ease;
     }
-    .two:before{
-        background: transparent;
-        background-color: transparent;
-        color: white;
-        border: transparent;
-    }
+    
     .three{
         cursor: pointer;
         background-color: transparent;
-        height: 50px;
-        width: 50px;
         color: azure;
-        font-size:25px;
+        font-size:20px;
         border:transparent;
+        transition: color 0.3s ease,transform 0.2s ease;
     }
+    .one:hover,.two:hover,.three:hover{
+        color: #ddd;
+        transform:scale(1.05)
+    }
+
     .fixed{
     position:fixed;
     bottom: 30px;
@@ -73,65 +79,65 @@
 }
 .four{
     border: transparent;
+    font-family:italic;
     color:white;
     text-decoration: none;
-    
-    
-    
-    
+    flex-direction: column;
+    margin-left:280%;
 }
-.no{
-    background: transparent;
+.five{
+    color: white;
+    border: transparent;
     background-color: transparent;
-    border: none;
-} 
+    text-decoration: none;
+}
+
 .c1{
     margin-left: 5%;
     margin-top: 8%;
     font-size: 70px;
+    font-weight:100;
     color: ivory
 }
 .c2{
     margin-left: 5%;
     font-size: 70px;
     color: ivory;
+    font-weight:100;
 }
 .c3{
     margin-left: 5%;
     font-size: 70px;
     color: ivory;
+    font-weight:100;
 }
 .c4{
     margin-left: 5%;
     font-size: 70px;
     color: ivory;
+    font-weight:100;
 }
 .no{
-    margin-left: 95%;
+    margin-left: 2880%;
     margin-top: 1%;
 } 
+
 </style>
-    <a href="https://github.com/k-marian-deepak/PYEXPO-HACK_HUSTLERS">
-    <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" height="40px" width="50px" class="no"></a>
-<ul>
-    <li><button class="one"><a href="/home" class="four">HOME</a></button></li>
-   <li><button class="two"><a href="/main" class="four">MAIN</a></button></li>
-    <li><button class="three"><a href="aboutus" class="four">ABOUT US</a></button></li>
-</ul>
+
+<div style="display: flex; justify-content: space-between; padding: 0 20px; align-items: center ;">
+    <div><a href="https://github.com/k-marian-deepak/PYEXPO-HACK_HUSTLERS"><img src="https://static-00.iconduck.com/assets.00/github-icon-256x256-86mk3f7k.png" height="50px" width="50px" ></a></div>
+    <ul style="display: flex; gap:120px; align-items: center; width: auto;">
+        <li><a href="overview" class="four"><button class="two">OVERVIEW</button></a></li>
+        <li><a href="help" class="four"><button class="one">MAIN</button></a></li>
+        <li><a href="aboutus" class="four"><button class="three">ABOUT US</button></a></li>  
+    </ul>
+    <div></div>
+</div>
 <div>
-   <button class="fixed" style="float:right;"><a href="report" class="four">VIEW REPORTS></a></button> 
+   <button class="fixed" style="float:right;"><a href="report" class="five">VIEW REPORTS></a></button> 
 </div>
 <style>
-    .bodoni-moda-robin{
-  font-family: "Bodoni Moda", serif;
-  font-optical-sizing:auto;
-  font-weight:700 ;
-  font-style:normal;
-}
+
 </style>
-<h1 class="c1">AUTONOMOUS</h1>
-<h1 class="c2"> TRAFFIC</h1>
-<h1 class="c3"> SIGNAL</h1>
-<h1 class="c4"> OPTIMIZATION</h1>
 </body>
 </html>
